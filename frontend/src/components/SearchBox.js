@@ -1,3 +1,5 @@
+import "./SearchBox.css";
+
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 let autoComplete;
@@ -56,11 +58,11 @@ function SearchBox() {
   return (
     <div className="search-location-input">
       <input
-        style={{ width: "500px" }}
         ref={autoCompleteRef}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Enter Your Address"
+        placeholder="Search Your Street..."
         value={query}
+        id="search_bx"
       />
     </div>
   );

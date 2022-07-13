@@ -1,0 +1,23 @@
+#search_bx
+{
+    width: 603px;
+    height: 68px;
+    border-radius: 55px;
+    color: #6D7A84;
+    background-color: #D9D9D9;
+    font-size: 24pt;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-indent: 43px;
+}
+::placeholder{
+    color: #6D7A84;
+    padding-right: 25px;
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-indent: 43px;
+    
+}
