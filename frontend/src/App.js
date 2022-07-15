@@ -1,12 +1,16 @@
 import React from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import SearchBox from "./components/SearchBox";
-// import { Col, Row } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./components/LandingPage";
+import Login from "./components/auth/Login";
 function App() {
   return (
     <div>
-      <Landing></Landing>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -25,7 +25,6 @@ function LandingPage() {
         </div>
       </div>
       <div id="circle-1"></div>
-      <div id="circle-2"></div>
     </div>
   );
 }
