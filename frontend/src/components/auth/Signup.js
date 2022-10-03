@@ -9,16 +9,19 @@ function SignUp() {
     profile: "",
     password: "",
   });
+  const [ig, setig] = useState("");
   async function handler(e) {
     e.preventDefault();
-    console.log(data.profile);
-    const fd = new FormData();
-    fd.append("profile", data.profile);
-    fd.append("name", data.name);
-    fd.append("email", data.email);
-    fd.append("password", data.password);
-
-    const res = await axios.post("http://localhost:8000/signup/data", fd);
+    console.log("clicked");
+    const reader = new FileReader();
+    reader.readAsDataURL(ig);
+    reader.onload = () => {
+      setData({ ...data, profile: reader.result });
+    };
+    const res = await axios.post("http://localhost:8000/signup/data", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    console.log(res);
   }
   return (
     <div id="main">
@@ -56,10 +59,10 @@ function SignUp() {
             <label>Profile</label>
             <input
               type="file"
-              name="prf"
+              name="profile"
               onChange={(e) => {
                 console.log(e.target.files);
-                setData({ ...data, profile: e.target.files[0] });
+                setig(e.target.files[0]);
               }}
             ></input>
           </div>
