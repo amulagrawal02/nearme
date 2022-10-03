@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const fileupload = require("express-fileupload");
 const signup = require("./router/signup");
+const login = require("./router/login");
 const cloudinary = require("cloudinary").v2;
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/signup", signup);
+app.use("/login", login);
 app.listen(8000, () => {
   console.log("server start serving at port", 8000);
 });

@@ -1,23 +1,21 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Login.css";
 function SignUp() {
   const [data, setData] = useState({
     name: "",
     email: "",
-    profile: "",
     password: "",
   });
   const [ig, setig] = useState("");
   async function handler(e) {
     e.preventDefault();
     console.log("clicked");
-    const reader = new FileReader();
-    reader.readAsDataURL(ig);
-    reader.onload = () => {
-      setData({ ...data, profile: reader.result });
-    };
+    // const reader = new FileReader();
+    // reader.readAsDataURL(ig);
+    // reader.onload = () => {
+    //   setData({ ...data, profile: reader.result });
+    // };
     const res = await axios.post("http://localhost:8000/signup/data", data, {
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -55,17 +53,7 @@ function SignUp() {
               }}
             ></input>
           </div>
-          <div>
-            <label>Profile</label>
-            <input
-              type="file"
-              name="profile"
-              onChange={(e) => {
-                console.log(e.target.files);
-                setig(e.target.files[0]);
-              }}
-            ></input>
-          </div>
+
           <div>
             <label id="spl-txt">Already have account?</label>
             <button onClick={handler}>SignUp</button>
