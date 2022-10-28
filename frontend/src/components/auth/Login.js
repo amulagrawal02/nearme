@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 function Login() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     password: "",
     email: "",
   });
+
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(data.email);
@@ -16,7 +19,7 @@ function Login() {
     console.log(response);
     if (response.token) {
       localStorage.setItem("token", response.token);
-      window.location.href = "/";
+      navigate("/");
     } else {
       alert("check your email and password");
     }
