@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import "./Login.css";
+import { useAuth } from "../auth_context";
 function Login() {
   const navigate = useNavigate();
+  const auth = useAuth();
   const [data, setData] = useState({
     password: "",
     email: "",
@@ -11,14 +14,13 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(data.email);
-    console.log(data.password);
     const response = await (
       await axios.post("http://localhost:8000/login/data", data)
     ).data;
     console.log(response);
     if (response.token) {
       localStorage.setItem("token", response.token);
+      auth.login(data);
       navigate("/");
     } else {
       alert("check your email and password");

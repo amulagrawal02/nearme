@@ -3,6 +3,7 @@ const user = require("../model/signup_schema");
 const jwt = require("jsonwebtoken");
 // for logging the user
 module.exports.loginUser = async function (req, res) {
+  console.log(req.body.email);
   const person = await user.findOne({ email: req.body.email });
   if (!person) {
     console.log("user not found with this email");
@@ -28,8 +29,8 @@ module.exports.loginUser = async function (req, res) {
 
 // for validate jwt token or fetch the data for particular token
 module.exports.getData = async function (req, res) {
-  const tkn = req.body.token;
-  console.log(tkn);
+  const tkn = req.body.data;
+  // console.log(tkn);
   await jwt.verify(tkn, "nearme", async (err, decoded) => {
     if (err) {
       console.log("Invaild token while visting profile page");
