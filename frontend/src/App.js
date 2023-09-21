@@ -5,6 +5,7 @@ import Login from "./components/auth/Login";
 import Profile from "./components/UserProfile";
 import Signup from "./components/auth/Signup";
 import ReqAuth from "./components/ReqAuth";
+import Create from "./components/CreatePost";
 import { AuthProvider } from "./components/auth_context";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Signup />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/create" element={<Create />}></Route>
           </Routes>
         </AuthProvider>
       </BrowserRouter>

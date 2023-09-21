@@ -10,20 +10,22 @@ export const AuthProvider = ({ children }) => {
   };
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("token");
   };
   useEffect(() => {
+    const data = localStorage.getItem("token");
     async function ftch() {
-      const data = localStorage.getItem("token");
-      const response = await await axios.post(
-        "http://localhost:8000/login/getData",
-        { data }
-      );
+      const response = await axios.post("http://localhost:8000/login/getData", {
+        data,
+      });
       if (response.data.status === true) {
         // const dt = {email : response.data.email, }
         login(response.data.email);
       }
     }
-    ftch();
+    if (data) {
+      ftch();
+    }
   });
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

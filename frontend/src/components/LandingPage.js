@@ -30,9 +30,9 @@ function LandingPage() {
         <img src={require("../assets/img1.png")} id="searchImg"></img>
         <div id="main_text">
           <div id="heading">
-            <h2>Everything near you is Useful.</h2>
+            {/* <h2>Everything near you is Useful.</h2> */}
             <h2>
-              <span>FIND</span> your's
+              <span>FIND </span>Nearest Rental Car
             </h2>
           </div>
           <div>
